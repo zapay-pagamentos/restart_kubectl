@@ -15,7 +15,7 @@ service_service:
         - name: Checkout
           uses: actions/checkout@v2
         - name: Deploy Staging
-          uses: .zapay-pagamentos/restart-kubectl
+          uses: .zapay-pagamentos/restart-kubectl@v0
           with:
               namespace: servicename
               deployment: deploymentname
