@@ -15,5 +15,6 @@ runs:
         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
       shell: bash
     - run: |
+        aws eks --region ${{ inputs.region }} update-kubeconfig --name ${{ inputs.cluster }}
         kubectl -n ${{ inputs.namespace }} rollout restart deployment/${{ inputs.deployment }}
       shell: bash
