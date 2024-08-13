@@ -15,9 +15,5 @@ runs:
         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
       shell: bash
     - run: |
-        mkdir ~/.aws/
-        echo "[default]\naws_access_key_id = $K8S_DEPLOY_AWS_ACCESS_KEY_ID\naws_secret_access_key = $K8S_DEPLOY_AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
-        echo "$KUBE_CONFIG_DATA" | base64 -d > /tmp/config
-        export KUBECONFIG=/tmp/config
         kubectl -n ${{ inputs.namespace }} rollout restart deployment/${{ inputs.deployment }}
       shell: bash
